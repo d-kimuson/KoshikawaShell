@@ -1,5 +1,4 @@
 #!/bin/sh
-# 終了はexit or ctrl-c
 
 function printr() {
     #statements
@@ -67,7 +66,11 @@ do
     printf " なにする? >> "
     printf " "
     read tmp1
-    $tmp1
+    if [ "${tmp1}" != "exit" ]; then
+        $tmp1
+    else
+        echo "今日は帰さないぞ！"
+    fi
 done
 
 stty intr '^C' susp '^Z'
