@@ -1,19 +1,34 @@
 #!/bin/bash
 
-function printr() {
-    #statements
-    printf "\e[31m%s\e[m" $1
+RED="\e[31m%s\e[m"
+GREEN="\e[32m%s\e[m"
+YELLOW="\e[33m%s\e[m"
+BLUE="\e[34m%s\e[m"
+PURPLE="\e[35m%s\e[m"
+CYAN="\e[36m%s\e[m"
+GRAY="\e[37m%s\e[m"
+
+function print_colored() {
+    # $1=color, $2=statement
+    printf "$1" $2
 }
 
-function printb() {
-    #statements
-    printf "\e[34m%s\e[m" $1
+function color_chech() {
+    print_colored $RED "RED"; printf "\n"
+    print_colored $GREEN "GREEN"; printf "\n"
+    print_colored $YELLOW "YELLOW"; printf "\n"
+    print_colored $BLUE "BLUE"; printf "\n"
+    print_colored $PURPLE "PURPLE"; printf "\n"
+    print_colored $CYAN "CYAN"; printf "\n"
+    print_colored $GRAY "GRAY"; printf "\n"
 }
 
-function printlg() {
-    #statements
-    printf "\e[92m%s\e[m" $1
-}
+# -- confing --
+USER_COLOR=$GREEN
+CWD_COLOR=$YELLOW
+BRANCH_COLOR=$PURPLE
+KOSHIKAWA_COLOR=$CYAN
+# -------------
 
 clear
 USERNAME=$(whoami)
@@ -49,9 +64,9 @@ index=0
 stty intr '^P'
 stty susp ''
 
-printr "こしかわ2.0"
+print_colored $KOSHIKAWA_COLOR "こしかわ2.0"
 printf "「おー、"
-printlg $USERNAME
+print_colored $USER_COLOR $USERNAME
 printf " か。適当にあがっていいよ。」"
 read
 
@@ -64,26 +79,26 @@ do
         is_branch=1
         branch=$(git branch | grep "*" | cut -f 2 -d " ")
     fi
-    printlg "ひとりごと用こしかわ"
+    print_colored $KOSHIKAWA_COLOR "ひとりごと用こしかわ"
     printf "「"
     printf ${array[$index]}
     printf "」\n"
 
-    printr "$USERNAME"
+    print_colored $USER_COLOR "$USERNAME"
     printf " in "
-    printb "${cwd}"
+    print_colored $CWD_COLOR "${cwd}"
     if [ ${is_branch} -eq 1 ]; then
         printf " at "
-        printr "${branch}"
+        print_colored $BRANCH_COLOR "${branch}"
     fi
 
     printf "\n"
 
     read -e -p "なにする? >> " tmp1
-    if [ "${tmp1}" != "exit" ]; then
-        ${tmp1}
-    else
+    if [ "${tmp1}" == "exit" ]; then
         echo "今日は帰さないぞ！"
+    else
+        ${tmp1}
     fi
 done
 
