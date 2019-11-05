@@ -1,6 +1,9 @@
 #!/bin/sh
 
-chmod a+x ./koshikawa.sh && cp ./koshikawa.sh ~/
-sed -i -e s/".\/koshikawa.sh"/""/g ~/.bash_profile
+script_path=`pwd`"/koshikawa.sh"
+
+chmod a+x ./uninstall.sh
+chmod a+x $script_path
+sed -i -e "s#$script_path##g" ~/.bash_profile
 \rm ~/.bash_profile-e
-echo "./koshikawa.sh" >> ~/.bash_profile
+echo "$script_path" >> ~/.bash_profile

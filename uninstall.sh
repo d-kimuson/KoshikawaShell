@@ -1,5 +1,6 @@
 #!/bin/sh
 
-sed -i -e s/".\/koshikawa.sh"/""/g ~/.bash_profile
+script_path=`pwd`"/koshikawa.sh"
+
+sed -i -e "s#$script_path##g" ~/.bash_profile
 \rm ~/.bash_profile-e
-\rm ~/.koshikawa.sh
