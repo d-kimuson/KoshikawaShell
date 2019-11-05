@@ -94,11 +94,13 @@ do
 
     printf "\n"
 
-    read -e -p "なにする? >> " tmp1
-    if [ "${tmp1}" == "exit" ]; then
+    read -e -p "なにする? >> " CMD
+    history -s "$CMD"
+
+    if [ "${CMD}" == "exit" ]; then
         echo "今日は帰さないぞ！"
     else
-        ${tmp1}
+        ${CMD}
     fi
 done
 
