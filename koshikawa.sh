@@ -58,16 +58,30 @@ read
 while :
 do
     index=$(($RANDOM%22))
+    cwd=$(echo `pwd` | sed "s#$HOME#~#g")
+    is_branch=0
+    if [ -d ./.git ]; then
+        is_branch=1
+        branch=$(git branch | grep "*" | cut -f 2 -d " ")
+    fi
     printlg "ひとりごと用こしかわ"
     printf "「"
     printf ${array[$index]}
     printf "」\n"
-    printr "こしかわ2.0"
-    printf " なにする? >> "
-    printf " "
-    read tmp1
+
+    printr "$USERNAME"
+    printf " in "
+    printb "${cwd}"
+    if [ ${is_branch} -eq 1 ]; then
+        printf " at "
+        printr "${branch}"
+    fi
+
+    printf "\n"
+
+    read -e -p "なにする? >> " tmp1
     if [ "${tmp1}" != "exit" ]; then
-        $tmp1
+        ${tmp1}
     else
         echo "今日は帰さないぞ！"
     fi
