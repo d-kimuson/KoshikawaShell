@@ -23,6 +23,7 @@ function color_chech() {
     print_colored $GRAY "GRAY"; printf "\n"
 }
 
+
 # -- confing --
 USER_COLOR=$GREEN
 CWD_COLOR=$YELLOW
@@ -99,6 +100,8 @@ do
 
     if [ "${CMD}" == "exit" ]; then
         echo "今日は帰さないぞ！"
+    elif [ "${CMD}" == "ls" ]; then
+        ls -G
     else
         ${CMD}
     fi
