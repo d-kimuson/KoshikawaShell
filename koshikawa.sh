@@ -106,7 +106,10 @@ do
     elif [ "${CMD}" == "ls" ]; then
         ls -G
     else
+        stty intr '^C' susp '^Z'
         eval ${CMD}
+        stty intr '^P'
+        stty susp ''
     fi
 done
 
