@@ -36,6 +36,7 @@ USERNAME=$(whoami)
 tmp1="None"
 tmp2="None"
 dir="None"
+
 array=()
 # 独り言配列⇓
 array+=( "牛乳飲んだら腹壊したんだけど..." )
@@ -64,6 +65,8 @@ index=0
 
 stty intr '^P'
 stty susp ''
+
+# shopt -s expand_aliases
 
 print_colored $KOSHIKAWA_COLOR "こしかわ2.0"
 printf "「おー、"
@@ -103,7 +106,7 @@ do
     elif [ "${CMD}" == "ls" ]; then
         ls -G
     else
-        ${CMD}
+        eval ${CMD}
     fi
 done
 
