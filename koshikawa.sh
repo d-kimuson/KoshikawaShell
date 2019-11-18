@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ${KOSHIKAWA_ROOT}/wakashiko.sh
+source ~/.bashrc
+
 RED="\e[31m%s\e[m"
 GREEN="\e[32m%s\e[m"
 YELLOW="\e[33m%s\e[m"
@@ -74,6 +77,8 @@ print_colored $USER_COLOR $USERNAME
 printf " か。適当にあがっていいよ。」"
 read
 
+shopt -s expand_aliases
+
 while :
 do
     index=$(($RANDOM%22))
@@ -83,10 +88,13 @@ do
         is_branch=1
         branch=$(git branch | grep "*" | cut -f 2 -d " ")
     fi
-    print_colored $KOSHIKAWA_COLOR "ひとりごと用こしかわ"
-    printf "「"
-    printf ${array[$index]}
-    printf "」\n"
+
+    if [ $(($RANDOM%10)) -eq 5 ]; then
+        print_colored $KOSHIKAWA_COLOR "ひとりごと用こしかわ"
+        printf "「"
+        printf ${array[$index]}
+        printf "」\n"
+    fi
 
     print_colored $USER_COLOR "$USERNAME"
     printf " in "
