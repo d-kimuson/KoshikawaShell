@@ -12,6 +12,7 @@ sed -i -e "s#$script_path##g" ~/.bash_profile
 echo "export KOSHIKAWA_ROOT=$(pwd)" >> ~/.bash_profile
 echo "source "$KOSHIKAWA_ROOT"/wakashiko.sh" >> ~/.bash_profile
 
+chmod a+x install.sh
 chmod a+x $script_path
 
 printf "Set koshikawa shell as the default shell ? (y/n) >> "; read ans
