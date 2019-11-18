@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source wakashiko.sh
+source ~/.bash_profile
+
 RED="\e[31m%s\e[m"
 GREEN="\e[32m%s\e[m"
 YELLOW="\e[33m%s\e[m"
