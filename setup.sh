@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 script_path=`pwd`"/koshikawa.sh"
 
@@ -19,3 +19,6 @@ if [ "${ans}" != 'n' ]; then
   sed -i -e "s#$script_path##g" ~/.bash_profile
   echo "$script_path" >> ~/.bash_profile
 fi
+
+echo "Complete."
+echo "Pls run 'source ~/.bash_profile' to apply!"

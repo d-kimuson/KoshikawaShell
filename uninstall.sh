@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 script_path=`pwd`"/koshikawa.sh"
 
