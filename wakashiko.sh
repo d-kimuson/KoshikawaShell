@@ -3,7 +3,15 @@
 function wakashiko() {
     CWD=$(pwd)
 
-    if [ $1 = "start" ]; then
+    if [ $# -ne 1 ]; then
+        echo "args must be 1"
+        wakashiko help
+    elif [ $1 = "help" ]; then
+        echo "## Wakashiko Help ##"
+        echo "- start: start koshikawa shell"
+        echo "- update: update koshikawa shell to latest version"
+        echo "- uninstall: uninstall koshikawa shell & wakashiko"
+    elif [ $1 = "start" ]; then
         # start koshikawa shell
         $KOSHIKAWA_ROOT/koshikawa.sh
     elif [ $1 = "update" ]; then
@@ -20,5 +28,6 @@ function wakashiko() {
         cd $CWD
     else
         echo "Argument: "$1" not found."
+        wakashiko help
     fi
 }
