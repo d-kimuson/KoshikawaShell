@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source wakashiko.sh
-source ~/.bash_profile
+source ${KOSHIKAWA_ROOT}/wakashiko.sh
+source ~/.bashrc
 
 RED="\e[31m%s\e[m"
 GREEN="\e[32m%s\e[m"
@@ -76,6 +76,8 @@ printf "「おー、"
 print_colored $USER_COLOR $USERNAME
 printf " か。適当にあがっていいよ。」"
 read
+
+shopt -s expand_aliases
 
 while :
 do
