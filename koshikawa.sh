@@ -113,6 +113,8 @@ do
         echo "今日は帰さないぞ！"
     elif [ "${CMD}" == "ls" ]; then
         ls -G
+    elif [ "${CMD}" == "color_check" ]; then
+        echo $(color_chech)
     else
         stty intr '^C' susp '^Z'
         eval ${CMD}
