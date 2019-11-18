@@ -88,10 +88,13 @@ do
         is_branch=1
         branch=$(git branch | grep "*" | cut -f 2 -d " ")
     fi
-    print_colored $KOSHIKAWA_COLOR "ひとりごと用こしかわ"
-    printf "「"
-    printf ${array[$index]}
-    printf "」\n"
+
+    if [ $(($RANDOM%10)) -eq 5 ]; then
+        print_colored $KOSHIKAWA_COLOR "ひとりごと用こしかわ"
+        printf "「"
+        printf ${array[$index]}
+        printf "」\n"
+    fi
 
     print_colored $USER_COLOR "$USERNAME"
     printf " in "
